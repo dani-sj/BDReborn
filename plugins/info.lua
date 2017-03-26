@@ -1,5 +1,5 @@
 --Begin info.lua By @SoLiD
-local Solid = 157059515
+local Solid = 223445853
 local function setrank(msg, user_id, value,chat_id)
   local hash = nil
 
@@ -7,7 +7,7 @@ local function setrank(msg, user_id, value,chat_id)
 
   if hash then
     redis:hset(hash, user_id, value)
-  return tdcli.sendMessage(chat_id, '', 0, '_set_ *Rank* _for_ *[ '..user_id..' ]* _To :_ *'..value..'*', 0, "md")
+  return tdcli.sendMessage(chat_id, '', 0, '_set_ *Rank* _for_ *[ '..user_id..' ]* _To :_ *'..value..'*\n @Plus_Mod', 0, "md")
   end
 end
 local function info_by_reply(arg, data)
@@ -28,12 +28,18 @@ local function info_cb(arg, data)
     else
   lastname = ""
   end
+  local telNum
+				if data.phone_number_ then
+					telNum = '+'..data.phone_number_
+				else
+					telNum = '----'
+				end
 	local hash = 'rank:'..arg.chat_id..':variables'
-   local text = "_First name :_ *"..firstname.."*\n_Last name :_ *"..lastname.."*\n_Username :_ "..username.."\n_ID :_ *"..data.id_.."*\n\n"
+   local text = "_First name :_ *"..firstname.."*\n_Last name :_ *"..lastname.."*\n_Username :_ "..username.."\n_ID :_ *"..data.id_.."*\n_Phone number:_ *"..telNum.."*\n\n"
 		    if data.id_ == tonumber(Solid) then
-		       text = text..'_Rank :_ *Executive Admin*\n\n'
+		       text = text..'_Rank :_ *mY sudoًں’–*\n\n'
 			   elseif is_sudo1(data.id_) then
-	           text = text..'_Rank :_ *Full Access Admin*\n\n'
+	           text = text..'_Rank :_ *Sudo*\n\n'
 		     elseif is_admin1(data.id_) then
 		       text = text..'_Rank :_ *Bot Admin*\n\n'
 		     elseif is_owner1(arg.chat_id, data.id_) then
@@ -49,7 +55,7 @@ local function info_cb(arg, data)
   local um_hash = 'msgs:'..data.id_..':'..arg.chat_id
   user_info_msgs = tonumber(redis:get(um_hash) or 0)
   text = text..'Total messages : '..user_info_msgs..'\n\n'
-  text = text..'@BeyondTeam'
+  text = text..'@Plus_Mod'
   tdcli.sendMessage(arg.chat_id, arg.msgid, 0, text, 0, "md")
 end
 tdcli_function ({
@@ -78,12 +84,18 @@ local function info_by_username(arg, data)
     else
   lastname = ""
   end
+  local telNum
+				if data.phone_number_ then
+					telNum = '+'..data.phone_number_
+				else
+					telNum = '----'
+				end
 	local hash = 'rank:'..arg.chat_id..':variables'
-   local text = "_First name :_ *"..firstname.."*\n_Last name :_ *"..lastname.."*\n_Username :_ "..username.."\n_ID :_ *"..data.id_.."*\n\n"
+   local text = "_First name :_ *"..firstname.."*\n_Last name :_ *"..lastname.."*\n_Username :_ "..username.."\n_ID :_ *"..data.id_.."*\n_Phone number:_ *"..telNum.."*\n\n"
 		    if data.id_ == tonumber(Solid) then
-		       text = text..'_Rank :_ *Executive Admin*\n\n'
+		       text = text..'_Rank :_ *Sudo*\n\n'
 			   elseif is_sudo1(data.id_) then
-	           text = text..'_Rank :_ *Full Access Admin*\n\n'
+	           text = text..'_Rank :_ *Sudo*\n\n'
 		     elseif is_admin1(data.id_) then
 		       text = text..'_Rank :_ *Bot Admin*\n\n'
 		     elseif is_owner1(arg.chat_id, data.id_) then
@@ -99,7 +111,7 @@ local function info_by_username(arg, data)
   local um_hash = 'msgs:'..data.id_..':'..arg.chat_id
   user_info_msgs = tonumber(redis:get(um_hash) or 0)
   text = text..'Total messages : '..user_info_msgs..'\n\n'
-  text = text..'@BeyondTeam'
+  text = text..'@Plus_Mod'
   tdcli.sendMessage(arg.chat_id, arg.msgid, 0, text, 0, "md")
    else
    tdcli.sendMessage(arg.chat_id, "", 0, "*User not found*", 0, "md")
@@ -123,12 +135,18 @@ local function info_by_id(arg, data)
     else
   lastname = ""
   end
+  local telNum
+				if data.phone_number_ then
+					telNum = '+'..data.phone_number_
+				else
+					telNum = '----'
+				end
 	local hash = 'rank:'..arg.chat_id..':variables'
-   local text = "_First name :_ *"..firstname.."*\n_Last name :_ *"..lastname.."*\n_Username :_ "..username.."\n_ID :_ *"..data.id_.."*\n\n"
+   local text = "_First name :_ *"..firstname.."*\n_Last name :_ *"..lastname.."*\n_Username :_ "..username.."\n_ID :_ *"..data.id_.."*\n_Phone number:_ *"..telNum.."*\n\n"
 		    if data.id_ == tonumber(Solid) then
-		       text = text..'_Rank :_ *Executive Admin*\n\n'
+		       text = text..'_Rank :_ *Sudo*\n\n'
 			   elseif is_sudo1(data.id_) then
-	           text = text..'_Rank :_ *Full Access Admin*\n\n'
+	           text = text..'_Rank :_ *Sudo*\n\n'
 		     elseif is_admin1(data.id_) then
 		       text = text..'_Rank :_ *Bot Admin*\n\n'
 		     elseif is_owner1(arg.chat_id, data.id_) then
@@ -144,7 +162,7 @@ local function info_by_id(arg, data)
   local um_hash = 'msgs:'..data.id_..':'..arg.chat_id
   user_info_msgs = tonumber(redis:get(um_hash) or 0)
   text = text..'Total messages : '..user_info_msgs..'\n\n'
-  text = text..'@BeyondTeam'
+  text = text..'@Plus_Mod'
   tdcli.sendMessage(arg.chat_id, arg.msgid, 0, text, 0, "md")
    else
    tdcli.sendMessage(arg.chat_id, "", 0, "*User not found*", 0, "md")
@@ -194,12 +212,18 @@ local function info2_cb(arg, data)
     else
   lastname = ""
   end
+  local telNum
+				if data.phone_number_ then
+					telNum = '+'..data.phone_number_
+				else
+					telNum = '----'
+				end
 	local hash = 'rank:'..arg.chat_id..':variables'
-   local text = "_First name :_ *"..firstname.."*\n_Last name :_ *"..lastname.."*\n_Username :_ "..username.."\n_ID :_ *"..data.id_.."*\n\n"
+   local text = "_First name :_ *"..firstname.."*\n_Last name :_ *"..lastname.."*\n_Username :_ "..username.."\n_ID :_ *"..data.id_.."*\n_Phone number:_ *"..telNum.."*\n\n"
 		    if data.id_ == tonumber(Solid) then
-		       text = text..'_Rank :_ *Executive Admin*\n\n'
+		       text = text..'_Rank :_ *Sudo*\n\n'
 			   elseif is_sudo1(data.id_) then
-	           text = text..'_Rank :_ *Full Access Admin*\n\n'
+	           text = text..'_Rank :_ *Sudo*\n\n'
 		     elseif is_admin1(data.id_) then
 		       text = text..'_Rank :_ *Bot Admin*\n\n'
 		     elseif is_owner1(arg.chat_id, data.id_) then
@@ -215,7 +239,7 @@ local function info2_cb(arg, data)
   local um_hash = 'msgs:'..data.id_..':'..arg.chat_id
   user_info_msgs = tonumber(redis:get(um_hash) or 0)
   text = text..'Total messages : '..user_info_msgs..'\n\n'
-  text = text..'@BeyondTeam'
+  text = text..'@Plus_Mod'
   tdcli.sendMessage(arg.chat_id, arg.msgid, 0, text, 0, "md")
    end
 end
@@ -234,4 +258,3 @@ return {
 },
 	run = run
 }
---This Is info.lua for BDReborn Source :)
